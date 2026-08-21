@@ -305,7 +305,7 @@ function GalleryCopy({ index, onEnter }: { index: number; onEnter: (i: number) =
   useEffect(() => {
     if (shown) onEnter(index);
   }, [shown, index, onEnter]);
-  const copy = GALLERY_COPY[index];
+  const copy = GALLERY_COPY[index] ?? GALLERY_COPY[0]!;
   return (
     <div ref={ref} className={cn("reveal max-w-md", shown && "reveal-in")}>
       <p className="eyebrow">{copy.eyebrow}</p>
