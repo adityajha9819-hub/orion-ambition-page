@@ -35,9 +35,9 @@ export const Route = createFileRoute("/")({
 const PRICE = "₹1,499";
 
 const GALLERY = [
-  { src: heroShot, alt: "ORION parfum bottle lit by cold blue light on black stone", label: "The Bottle" },
-  { src: packagingShot, alt: "ORION matte black packaging beside the frosted bottle", label: "The Case" },
-  { src: moodShot, alt: "Icy blue mist drifting over dark obsidian stone", label: "The Mood" },
+  { src: heroShot, srcSet: heroSet, alt: "ORION parfum bottle lit by cold blue light on black stone", label: "The Bottle" },
+  { src: packagingShot, srcSet: packagingSet, alt: "ORION matte black packaging beside the frosted bottle", label: "The Case" },
+  { src: moodShot, srcSet: moodSet, alt: "Icy blue mist drifting over dark obsidian stone", label: "The Mood" },
 ];
 
 const NOTES = [
