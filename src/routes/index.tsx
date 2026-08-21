@@ -4,9 +4,12 @@ import { ShoppingBag, X, ArrowLeft, ArrowUpRight, Instagram, Twitter, Facebook }
 
 import { Reveal, useParallax, useReveal } from "@/components/orion/reveal";
 import { cn } from "@/lib/utils";
-import heroShot from "@/assets/orion-hero.jpg";
-import packagingShot from "@/assets/orion-packaging.jpg";
-import moodShot from "@/assets/orion-mood.jpg";
+import heroShot from "@/assets/orion-hero.jpg?w=1200&format=webp";
+import heroSet from "@/assets/orion-hero.jpg?w=480;768;1200&format=webp&as=srcset";
+import packagingShot from "@/assets/orion-packaging.jpg?w=1200&format=webp";
+import packagingSet from "@/assets/orion-packaging.jpg?w=480;768;1200&format=webp&as=srcset";
+import moodShot from "@/assets/orion-mood.jpg?w=1200&format=webp";
+import moodSet from "@/assets/orion-mood.jpg?w=480;768;1200&format=webp&as=srcset";
 
 export const Route = createFileRoute("/")({
   head: () => ({
