@@ -54,6 +54,14 @@ export function useParallax<T extends HTMLElement>(strength = 0.12) {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
+    // Skip parallax on small screens / reduced motion — it costs paint work on mobile.
+    if (
+      window.matchMedia("(max-width: 767px)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setOffset(0);
+      return;
+    }
     let frame = 0;
     const onScroll = () => {
       if (frame) return;
