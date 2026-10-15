@@ -39,6 +39,16 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroShot,
+        imageSrcSet: heroSet,
+        imageSizes: "(min-width: 1024px) 52vw, 100vw",
+        fetchpriority: "high",
+      },
+    ],
   }),
   component: OrionPage,
 });
@@ -181,7 +191,7 @@ function Hero({
             <p className="eyebrow text-frost">SARKAR by Bhuvan Bam · Unisex fresh parfum</p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="text-display mt-5 text-[25vw] leading-[0.74] sm:text-[17vw] lg:text-[11rem]">
+            <h1 className="text-display mt-5 text-[21vw] leading-[0.82] sm:text-[17vw] lg:text-[11rem]">
               ORI<span className="text-gradient">ON</span>
             </h1>
           </Reveal>
@@ -498,7 +508,7 @@ function StickyAddBar({ visible, onAdd }: { visible: boolean; onAdd: () => void 
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-10">
+      <div className="sticky-add-bar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-10">
         <div className="min-w-0">
           <p className="text-display truncate text-xl">ORION · 100ml</p>
           <p className="text-[11px] tracking-widest text-muted-foreground uppercase">
