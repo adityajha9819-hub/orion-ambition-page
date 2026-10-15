@@ -39,6 +39,16 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        href: heroShot,
+        imageSrcSet: heroSet,
+        imageSizes: "(min-width: 1024px) 52vw, 100vw",
+        fetchpriority: "high",
+      },
+    ],
   }),
   component: OrionPage,
 });
