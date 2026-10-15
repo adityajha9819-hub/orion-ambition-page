@@ -319,4 +319,27 @@
     left: 0.75rem;
     right: 0.75rem;
   }
+
+  /* cheaper paint on phones: smaller blur radius, no backdrop blur */
+  .orb {
+    filter: blur(40px);
+    opacity: 0.4;
+  }
+
+  .glass-card,
+  .floating-ticket {
+    backdrop-filter: none;
+  }
+
+  .dot-matrix {
+    background-size: 28px 28px;
+    opacity: 0.16;
+  }
+}
+
+/* respect device safe areas for fixed bottom UI */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .sticky-add-bar-inner {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
 }

@@ -508,7 +508,7 @@ function StickyAddBar({ visible, onAdd }: { visible: boolean; onAdd: () => void 
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-10">
+      <div className="sticky-add-bar-inner mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-10">
         <div className="min-w-0">
           <p className="text-display truncate text-xl">ORION · 100ml</p>
           <p className="text-[11px] tracking-widest text-muted-foreground uppercase">
