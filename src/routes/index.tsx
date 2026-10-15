@@ -191,7 +191,7 @@ function Hero({
             <p className="eyebrow text-frost">SARKAR by Bhuvan Bam · Unisex fresh parfum</p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="text-display mt-5 text-[25vw] leading-[0.74] sm:text-[17vw] lg:text-[11rem]">
+            <h1 className="text-display mt-5 text-[21vw] leading-[0.82] sm:text-[17vw] lg:text-[11rem]">
               ORI<span className="text-gradient">ON</span>
             </h1>
           </Reveal>
