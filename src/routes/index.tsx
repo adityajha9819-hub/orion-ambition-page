@@ -37,9 +37,34 @@ export const Route = createFileRoute("/")({
           "Citrus, lavender, cedarwood and early wins. A maximalist fast-loading product story for SARKAR ORION.",
       },
       { property: "og:type", content: "product" },
+      { property: "og:url", content: "https://orion-ambition-page.lovable.app/" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#0d0b0f" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "SARKAR ORION Unisex Parfum 100ml",
+          description:
+            "Fresh citrus aromatic unisex parfum. Infinite. Cold. Ambitious. 100ml, 25% oil concentration.",
+          brand: { "@type": "Brand", name: "SARKAR" },
+          category: "Unisex Parfum",
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "INR",
+            price: "1499",
+            availability: "https://schema.org/InStock",
+            url: "https://orion-ambition-page.lovable.app/",
+          },
+        }),
+      },
     ],
     links: [
+      { rel: "canonical", href: "https://orion-ambition-page.lovable.app/" },
       {
         rel: "preload",
         as: "image",
@@ -153,7 +178,7 @@ function OrionPage() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-background text-foreground">
+    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Header cartCount={qty} onCart={() => setCartOpen(true)} />
       <main>
         <Hero offset={hero.offset} heroRef={hero.ref} onAdd={addToCart} />
@@ -333,6 +358,8 @@ function StickyGallery({ active, setActive }: { active: number; setActive: (i: n
               <button
                 key={shot.label}
                 onClick={() => setActive(i)}
+                aria-pressed={i === active}
+                aria-label={`View ${shot.label} image`}
                 className={cn(
                   "glass-card p-3 text-left text-[10px] tracking-[0.25em] uppercase",
                   i === active ? "text-accent" : "text-muted-foreground",
@@ -492,9 +519,15 @@ function Footer() {
           <a href="mailto:care@sarkarparfum.com">care@sarkarparfum.com</a>
         </nav>
         <div className="flex items-center gap-5 text-muted-foreground">
-          <Instagram className="h-4 w-4" />
-          <Twitter className="h-4 w-4" />
-          <Facebook className="h-4 w-4" />
+          <a href="#" aria-label="SARKAR on Instagram" className="hover:text-foreground">
+            <Instagram className="h-4 w-4" />
+          </a>
+          <a href="#" aria-label="SARKAR on Twitter" className="hover:text-foreground">
+            <Twitter className="h-4 w-4" />
+          </a>
+          <a href="#" aria-label="SARKAR on Facebook" className="hover:text-foreground">
+            <Facebook className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </footer>
