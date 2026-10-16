@@ -3,12 +3,11 @@ import { useEffect, useState } from "react";
 import {
   ArrowLeft,
   ArrowUpRight,
-  Facebook,
   Instagram,
   ShoppingBag,
   Star,
-  Twitter,
   X,
+  Youtube,
   Zap,
 } from "lucide-react";
 
@@ -123,9 +122,9 @@ const NOTES = [
 ];
 
 const COLLECTION = [
-  { name: "Noble", note: "Woody · Spiced Amber · Warm", price: "₹1,499", href: "#" },
-  { name: "Throne", note: "Leather · Oud · Commanding", price: "₹2,499", href: "#" },
-  { name: "Regal", note: "Floral · Vanilla · Opulent", price: "₹1,499", href: "#" },
+  { name: "Noble", note: "Woody · Spiced Amber · Warm", price: "₹1,499", href: "https://www.sarkar.store/products/noble" },
+  { name: "Throne", note: "Leather · Oud · Commanding", price: "₹2,499", href: "https://www.sarkar.store/products/throne-100ml-perform" },
+  { name: "Regal", note: "Floral · Vanilla · Opulent", price: "₹1,499", href: "https://www.sarkar.store/collections/shop-all" },
 ];
 
 const WINNING_ROUNDS = [
@@ -290,7 +289,7 @@ function Header({ cartCount, onCart }: { cartCount: number; onCart: () => void }
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-background/72 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10">
         <a
-          href="#"
+          href="https://www.sarkar.store/collections/shop-all"
           className="inline-flex items-center gap-2 text-[11px] tracking-[0.28em] text-muted-foreground uppercase hover:text-foreground"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
@@ -513,20 +512,19 @@ function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-10 md:flex-row md:items-center md:justify-between">
         <span className="text-display text-lg tracking-[0.45em]">SARKAR</span>
         <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
-          <a href="#">Shipping</a>
-          <a href="#">Returns</a>
-          <a href="#">Privacy</a>
+          <a href="https://www.sarkar.store/pages/know-sarkar">Brand Story</a>
+          <a href="https://www.sarkar.store/collections/value-sets">Value Sets</a>
+          <a href="https://www.sarkar.store/">Shipping</a>
+          <a href="https://www.sarkar.store/">Returns</a>
+          <a href="https://www.sarkar.store/">Privacy</a>
           <a href="mailto:care@sarkarparfum.com">care@sarkarparfum.com</a>
         </nav>
         <div className="flex items-center gap-5 text-muted-foreground">
-          <a href="#" aria-label="SARKAR on Instagram" className="hover:text-foreground">
+          <a href="https://www.instagram.com/bhuvan.bam22/" target="_blank" rel="noopener noreferrer" aria-label="Bhuvan Bam on Instagram" className="hover:text-foreground">
             <Instagram className="h-4 w-4" />
           </a>
-          <a href="#" aria-label="SARKAR on Twitter" className="hover:text-foreground">
-            <Twitter className="h-4 w-4" />
-          </a>
-          <a href="#" aria-label="SARKAR on Facebook" className="hover:text-foreground">
-            <Facebook className="h-4 w-4" />
+          <a href="https://www.youtube.com/@BBKiVines" target="_blank" rel="noopener noreferrer" aria-label="Bhuvan Bam on YouTube" className="hover:text-foreground">
+            <Youtube className="h-4 w-4" />
           </a>
         </div>
       </div>
