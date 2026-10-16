@@ -514,9 +514,9 @@ function Footer() {
         <nav className="flex flex-wrap gap-x-8 gap-y-3 text-[11px] tracking-[0.2em] text-muted-foreground uppercase">
           <a href="https://www.sarkar.store/pages/know-sarkar">Brand Story</a>
           <a href="https://www.sarkar.store/collections/value-sets">Value Sets</a>
-          <a href="https://www.sarkar.store/">Shipping</a>
-          <a href="https://www.sarkar.store/">Returns</a>
-          <a href="https://www.sarkar.store/">Privacy</a>
+          <a href="https://www.sarkar.store/pages/shipping-policy">Shipping</a>
+          <a href="https://www.sarkar.store/pages/refund-policy">Returns</a>
+          <a href="https://www.sarkar.store/pages/privacy-policy">Privacy</a>
           <a href="mailto:care@sarkarparfum.com">care@sarkarparfum.com</a>
         </nav>
         <div className="flex items-center gap-5 text-muted-foreground">
