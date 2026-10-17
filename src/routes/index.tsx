@@ -13,6 +13,7 @@ import {
 
 import { Reveal, useParallax, useReveal } from "@/components/orion/reveal";
 import { cn } from "@/lib/utils";
+import { ORION, orionProductSchema } from "@/lib/orion";
 import heroShot from "@/assets/orion-hero.jpg?w=960&format=webp";
 import heroSet from "@/assets/orion-hero.jpg?w=420;720;960;1200&format=webp&as=srcset";
 import packagingShot from "@/assets/orion-packaging.jpg?w=900&format=webp";
@@ -28,13 +29,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "SARKAR ORION is a fresh citrus aromatic unisex parfum with 25% oil concentration, French and Spanish formulation cues, and a cold maximalist launch experience.",
+          ORION.description,
       },
       { property: "og:title", content: "ORION 100ml — SARKAR Parfum" },
       {
         property: "og:description",
         content:
-          "Citrus, lavender, cedarwood and early wins. A maximalist fast-loading product story for SARKAR ORION.",
+          ORION.description,
       },
       { property: "og:type", content: "product" },
       { property: "og:url", content: "https://orion-ambition-page.lovable.app/" },
@@ -45,22 +46,7 @@ export const Route = createFileRoute("/")({
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Product",
-          name: "SARKAR ORION Unisex Parfum 100ml",
-          description:
-            "Fresh citrus aromatic unisex parfum. Infinite. Cold. Ambitious. 100ml, 25% oil concentration.",
-          brand: { "@type": "Brand", name: "SARKAR" },
-          category: "Unisex Parfum",
-          offers: {
-            "@type": "Offer",
-            priceCurrency: "INR",
-            price: "1499",
-            availability: "https://schema.org/InStock",
-            url: "https://orion-ambition-page.lovable.app/",
-          },
-        }),
+        children: JSON.stringify(orionProductSchema(new URL(heroShot, ORION.siteUrl).href)),
       },
     ],
     links: [
@@ -78,7 +64,7 @@ export const Route = createFileRoute("/")({
   component: OrionPage,
 });
 
-const PRICE = "₹1,499";
+const PRICE = `₹${ORION.price.toLocaleString("en-IN")}`;
 
 const GALLERY = [
   {
@@ -100,61 +86,45 @@ const GALLERY = [
     srcSet: moodSet,
     alt: "Icy blue mist drifting over dark obsidian stone",
     label: "Atmosphere",
-    caption: "Citrus air · lavender signal · cedarwood trail",
+    caption: "Fresh · Citrus · Aromatic",
   },
 ];
 
-const NOTES = [
-  {
-    tier: "Top",
-    items: ["Lemon", "Citrus Spark", "Cold Air"],
-    text: "Instant brightness built for workdays, morning runs and everyday momentum.",
-  },
-  {
-    tier: "Heart",
-    items: ["Lavender", "Mineral Mist", "Blue Aromatics"],
-    text: "A clean aromatic pulse that feels polished without becoming predictable.",
-  },
-  {
-    tier: "Base",
-    items: ["Cedarwood", "Musk", "Sandalwood"],
-    text: "A grounded drydown with smooth woods and a quietly confident trail.",
-  },
-];
+const NOTES = ORION.notes;
 
 const COLLECTION = [
-  { name: "Noble", note: "Woody · Spiced Amber · Warm", price: "₹1,499", href: "https://www.sarkar.store/products/noble" },
-  { name: "Throne", note: "Leather · Oud · Commanding", price: "₹2,499", href: "https://www.sarkar.store/products/throne-100ml-perform" },
-  { name: "Regal", note: "Floral · Vanilla · Opulent", price: "₹1,499", href: "https://www.sarkar.store/collections/shop-all" },
+  { name: "Noble", note: "View Noble at the official store", href: "https://www.sarkar.store/products/noble" },
+  { name: "Throne", note: "View Throne at the official store", href: "https://www.sarkar.store/products/throne-100ml-perform" },
+  { name: "Regal", note: "Explore the official collection", href: "https://www.sarkar.store/collections/shop-all" },
 ];
 
 const WINNING_ROUNDS = [
   {
     round: "01",
-    idea: "Constellation Commerce",
-    score: "9.6",
+    idea: "Fresh parfum",
+    score: "100ml",
     reason:
-      "Best blend of brand drama, fast static layout, clear CTA and cosmic ORION memory hooks.",
+      "ORION is a Fresh, Citrus, Aromatic unisex parfum from SARKAR.",
   },
   {
     round: "02",
-    idea: "Cinema Drop",
-    score: "9.3",
-    reason: "Framer-style pacing, oversized type and product stills create a premium launch feel.",
+    idea: "Perfume oil",
+    score: "25%",
+    reason: "The official Orion product page lists 25% oil concentration.",
   },
   {
     round: "03",
-    idea: "React Bits Energy",
-    score: "9.2",
+    idea: "SARKAR",
+    score: "",
     reason:
-      "CSS-only dot fields, glare cards and animated badges deliver motion without heavy runtime cost.",
+      "ORION belongs to Bhuvan Bam’s SARKAR fragrance collection.",
   },
   {
     round: "04",
-    idea: "Bharat Luxury Maximalism",
-    score: "9.5",
+    idea: "Official store",
+    score: "",
     reason:
-      "Royal colour, creator-led confidence and value proof make the page distinct for India.",
+      "Purchase details, delivery terms and customer support are available from the official SARKAR store.",
   },
 ];
 
@@ -178,7 +148,7 @@ function OrionPage() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
+    <div id="top" className="min-h-screen overflow-x-clip bg-background text-foreground">
       <Header cartCount={qty} onCart={() => setCartOpen(true)} />
       <main>
         <Hero offset={hero.offset} heroRef={hero.ref} onAdd={addToCart} />
@@ -222,15 +192,14 @@ function Hero({
           </Reveal>
           <Reveal delay={150}>
             <p className="mt-6 max-w-2xl text-balance text-2xl leading-tight text-silver sm:text-4xl">
-              It smells like citrus, lavender and early wins — now staged as a maximalist cold-sky
-              ritual.
+              {ORION.tagline}
             </p>
           </Reveal>
           <Reveal delay={230}>
             <div className="mt-9 grid max-w-xl grid-cols-3 gap-2">
               <Metric v="25%" k="Oil concentration" />
               <Metric v="100ml" k="Full size" />
-              <Metric v="24–36h" k="Ships fast" />
+              <Metric v="Unisex" k="Parfum" />
             </div>
           </Reveal>
           <Reveal delay={300}>
@@ -239,7 +208,7 @@ function Hero({
               <a href="#composition" className="magnetic-link">
                 Explore notes <ArrowUpRight className="h-4 w-4" />
               </a>
-              <p className="text-display text-4xl text-accent">{PRICE}</p>
+               <p className="text-display text-4xl text-accent">{PRICE}<span className="mt-2 block font-sans text-xs text-muted-foreground">Incl. of all taxes</span></p>
             </div>
           </Reveal>
         </div>
@@ -260,7 +229,7 @@ function Hero({
             <div className="scanline" aria-hidden />
           </div>
           <div className="floating-ticket">
-            <Star className="h-4 w-4 fill-current" /> Premium parfum · IFRA-compliant positioning
+            <Star className="h-4 w-4 fill-current" /> Unisex Parfum · 100ml
           </div>
         </div>
       </div>
@@ -321,9 +290,9 @@ function ProofStrip() {
     <section className="border-y border-border bg-card/45 px-5 py-5 md:px-10">
       <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-4 text-[11px] tracking-[0.24em] text-muted-foreground uppercase">
         <span>Fresh citrus aromatic</span>
-        <span>French + Spanish formulation cues</span>
-        <span>Mass-premium price, niche theatre</span>
-        <span>Mobile-first performance</span>
+        <span>25% perfume oil</span>
+        <span>100ml · Unisex Parfum</span>
+        <span>Incl. of all taxes</span>
       </div>
     </section>
   );
@@ -400,8 +369,7 @@ function GalleryCopy({
       </p>
       <h2 className="text-display mt-5 text-4xl lg:text-6xl">{caption}</h2>
       <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-        A high-contrast editorial block designed to feel like a Framer launch page while staying
-        simple, server-rendered and fast.
+        {index === 0 ? "ORION is a 100ml unisex parfum with a fresh, citrus, aromatic character." : index === 1 ? "Discover ORION and its packaging in the gallery." : "Cold in mood, ambitious in spirit. ORION pairs a bright opening with floral heart notes and a woody, musky base."}
       </p>
     </div>
   );
@@ -436,16 +404,16 @@ function ConceptLab() {
     <section className="px-5 py-24 md:px-10">
       <div className="mx-auto max-w-7xl">
         <Reveal>
-          <p className="eyebrow">Research → rating → only winners kept</p>
+          <p className="eyebrow">Infinite. Cold. Ambitious.</p>
           <h2 className="text-display mt-5 max-w-4xl text-5xl lg:text-7xl">
-            Four concept rounds filtered to 9/10+ ideas.
+            ORION by SARKAR
           </h2>
         </Reveal>
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {WINNING_ROUNDS.map((r) => (
             <Reveal key={r.round}>
               <article className="glass-card h-full p-6">
-                <p className="eyebrow">Round {r.round}</p>
+                <p className="eyebrow">0{Number(r.round)}</p>
                 <div className="mt-7 flex items-end justify-between gap-3">
                   <h3 className="text-display text-4xl">{r.idea}</h3>
                   <strong className="text-gradient text-3xl">{r.score}</strong>
@@ -455,6 +423,7 @@ function ConceptLab() {
             </Reveal>
           ))}
         </div>
+        <a className="magnetic-link mt-8" href={ORION.storeUrl}>Official ORION product details <ArrowUpRight className="h-4 w-4" /></a>
       </div>
     </section>
   );
@@ -463,7 +432,7 @@ function ConceptLab() {
 const DETAILS = [
   { k: "Size", v: "100 ml / 3.4 fl. oz." },
   { k: "Concentration", v: "25% perfume oil" },
-  { k: "Occasion", v: "Workdays · runs · everyday" },
+  { k: "Profile", v: "Fresh · Citrus · Aromatic" },
   { k: "Made for", v: "Men & women" },
 ];
 function DetailsBar() {
@@ -491,7 +460,7 @@ function CrossSell() {
           {COLLECTION.map((c, i) => (
             <Reveal key={c.name} delay={i * 90}>
               <a href={c.href} className="glare-card block p-7">
-                <span className="eyebrow">Parfum · 100ml · {c.price}</span>
+                <span className="eyebrow">SARKAR collection</span>
                 <span className="text-display mt-20 flex items-center gap-2 text-5xl text-foreground group-hover:text-accent">
                   {c.name}
                   <ArrowUpRight className="h-5 w-5" />
@@ -518,7 +487,7 @@ function Footer() {
           <a href="https://www.sarkar.store/pages/shipping-policy">Shipping</a>
           <a href="https://www.sarkar.store/pages/refund-policy">Returns</a>
           <a href="https://www.sarkar.store/pages/privacy-policy">Privacy</a>
-          <a href="mailto:care@sarkarparfum.com">care@sarkarparfum.com</a>
+          <a href={`mailto:${ORION.contact}`}>{ORION.contact}</a>
         </nav>
         <div className="flex items-center gap-5 text-muted-foreground">
           <a href="https://www.instagram.com/bhuvan.bam22/" target="_blank" rel="noopener noreferrer" aria-label="Bhuvan Bam on Instagram" className="hover:text-foreground">
@@ -563,7 +532,32 @@ function CartDrawer({
   onClose: () => void;
   setQty: (n: number) => void;
 }) {
-  const total = 1499 * qty;
+  const total = ORION.price * qty;
+  useEffect(() => {
+    if (!open) return;
+    const drawer = document.getElementById("orion-cart");
+    if (!drawer) return;
+    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const controls = () => Array.from(drawer.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], [tabindex="0"]'));
+    controls()[0]?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { event.preventDefault(); onClose(); }
+      if (event.key !== "Tab") return;
+      const items = controls();
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = oldOverflow;
+      previous?.focus();
+    };
+  }, [open, onClose]);
   return (
     <>
       <div
@@ -575,6 +569,11 @@ function CartDrawer({
         )}
       />
       <aside
+        id="orion-cart"
+        role="dialog"
+        aria-modal={open ? true : undefined}
+        aria-labelledby="orion-cart-title"
+        inert={!open}
         aria-hidden={!open}
         className={cn(
           "fixed top-0 right-0 z-50 flex h-full w-full max-w-md flex-col border-l border-border bg-background transition-transform duration-500",
@@ -582,7 +581,7 @@ function CartDrawer({
         )}
       >
         <div className="flex items-center justify-between border-b border-border px-6 py-5">
-          <p className="eyebrow">Your Bag</p>
+          <p id="orion-cart-title" className="eyebrow">Your Bag</p>
           <button onClick={onClose} aria-label="Close cart">
             <X className="h-5 w-5" />
           </button>
@@ -632,12 +631,14 @@ function CartDrawer({
             <span className="eyebrow">Total</span>
             <span className="text-display text-3xl">₹{total.toLocaleString("en-IN")}</span>
           </div>
-          <button
-            disabled={qty === 0}
-            className="cta-button mt-6 w-full justify-center disabled:opacity-30"
+          <a
+            href={qty > 0 ? ORION.storeUrl : undefined}
+            aria-disabled={qty === 0}
+            className={cn("cta-button mt-6 w-full justify-center", qty === 0 && "pointer-events-none opacity-30")}
           >
             Checkout <ArrowUpRight className="h-4 w-4" />
-          </button>
+          </a>
+          <p className="mt-3 text-xs text-muted-foreground">Purchase on the official SARKAR store. Select your quantity there.</p>
         </div>
       </aside>
     </>
