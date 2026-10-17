@@ -21,6 +21,7 @@ import moodShot from "@/assets/orion-mood.jpg?w=900&format=webp";
 import moodSet from "@/assets/orion-mood.jpg?w=420;720;900&format=webp&as=srcset";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "ORION 100ml — SARKAR Parfum by Bhuvan Bam" },
